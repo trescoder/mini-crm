@@ -1,9 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClientsService {
+  readonly url = 'http://localhost:3000/clients';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  getAllClients() {
+    return this.http.get(this.url);
+  }
 }
