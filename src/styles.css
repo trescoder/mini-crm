@@ -1,4 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: radial-gradient(
+    circle at top left,
+    /* rgb(33, 29, 75) 0%,
+    rgb(33, 29, 75) 4%,
+    rgb(29, 39, 97) 4%,
+    rgb(29, 39, 97) 39%,
+    rgb(24, 49, 120) 39%,
+    rgb(24, 49, 120) 45%, */
+      rgb(20, 59, 142) 45%,
+    rgb(20, 59, 142) 69%,
+    rgb(15, 69, 164) 69%,
+    rgb(15, 69, 164) 71%,
+    rgb(11, 79, 186) 71%,
+    rgb(11, 79, 186) 75%,
+    rgb(6, 89, 209) 75%,
+    rgb(6, 89, 209) 79%,
+    rgb(2, 99, 231) 79%,
+    rgb(2, 99, 231) 100%
+  );
+}
