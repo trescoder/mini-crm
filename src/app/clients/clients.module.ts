@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientsComponent } from './clients.component';
+import { AddClientComponent } from './add-client/add-client.component';
 
 
 
 @NgModule({
   declarations: [
-    ClientsComponent
+    ClientsComponent,
+    AddClientComponent
   ],
   imports: [
     CommonModule
