@@ -1,5 +1,14 @@
 <div class="main-container">
-  <nav>navigation here</nav>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['/clients']">clients</a>
+      </li>
+      <li>
+        <a [routerLink]="['/add-client']">add client</a>
+      </li>
+    </ul>
+  </nav>
   <aside>
     <router-outlet></router-outlet>
   </aside>
