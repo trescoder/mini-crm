@@ -1,5 +1,9 @@
-<div class="client-container" *ngFor="let client of clients$ | async">
-  <p>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</p>
-  <p>{{ client.email }}</p>
-  <p>{{ client.tel }}</p>
+<div class="client-container">
+  <div class="client" *ngFor="let client of clients$ | async">
+    <p>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</p>
+    <p>{{ client.tel }}</p>
+    <div class="buttons-container">
+      <button>delete</button>
+    </div>
+  </div>
 </div>
