@@ -1,9 +1,9 @@
 form {
   margin-top: 40px;
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.85);
   background-color: rgb(255 255 255 / 78%);

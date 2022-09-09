@@ -20,4 +20,8 @@ export class ClientsService {
   removeClient(clientId: string) {
     return this.http.delete(this.url + '/' + clientId);
   }
+
+  searchClientsByName(name: any) {
+    return this.http.get(this.url + '/' + name);
+  }
 }

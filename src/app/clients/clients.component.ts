@@ -21,4 +21,8 @@ export class ClientsComponent implements OnInit {
       }
     });
   }
+
+  searchClient(name: string) {
+    this.clients$ = this.clientsService.searchClientsByName(name);
+  }
 }

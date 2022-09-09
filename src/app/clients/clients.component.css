@@ -42,3 +42,39 @@
   letter-spacing: 1px;
   background-color: rgba(190, 11, 11, 0.719);
 }
+
+.search-bar-container {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.search-bar-container input:valid,
+.search-bar-container input:focus {
+  outline: 0;
+  border: none;
+}
+
+.search-bar-container input {
+  display: inline-block;
+  width: 80%;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.82);
+}
+
+.search-bar-container button {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(5, 18, 204, 0.836);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.search-bar-container button:hover {
+  transform: scale(1.1);
+}
