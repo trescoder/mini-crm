@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client } from 'src/app/interfaces/client.interface';
+import { RemoveClient } from 'src/app/interfaces/remove-user';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class ClientsService {
   }
 
   removeClient(clientId: string) {
-    return this.http.delete(this.url + '/' + clientId);
+    return this.http.delete<RemoveClient>(this.url + '/' + clientId);
   }
 
   searchClientsByName(name: string) {

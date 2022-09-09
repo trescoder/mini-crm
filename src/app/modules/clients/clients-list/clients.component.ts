@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/interfaces/client.interface';
+import { RemoveClient } from 'src/app/interfaces/remove-user';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -17,11 +18,13 @@ export class ClientsComponent implements OnInit {
   }
 
   removeClient(clientId: string) {
-    this.clientsService.removeClient(clientId).subscribe((data: any) => {
-      if (data.success) {
-        this.clients$ = this.clientsService.getAllClients();
-      }
-    });
+    this.clientsService
+      .removeClient(clientId)
+      .subscribe((data: RemoveClient) => {
+        if (data.success) {
+          this.clients$ = this.clientsService.getAllClients();
+        }
+      });
   }
 
   searchClient(name: string) {
