@@ -9,10 +9,9 @@
 </div>
 <div class="client-container">
   <div class="client" *ngFor="let client of clients$ | async">
-    <p>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</p>
-    <p>{{ client.tel }}</p>
-    <div class="buttons-container">
-      <button (click)="removeClient(client._id)">delete</button>
-    </div>
+    <app-client
+      [client]="client"
+      (deleteEvent)="removeClient($event)"
+    ></app-client>
   </div>
 </div>
