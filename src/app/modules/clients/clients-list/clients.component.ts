@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientsService } from '../clients.service';
+import { Observable } from 'rxjs';
+import { Client } from 'src/app/interfaces/client.interface';
+import { ClientsService } from '../services/clients.service';
 
 @Component({
   selector: 'app-clients',
@@ -7,7 +9,7 @@ import { ClientsService } from '../clients.service';
   styleUrls: ['./clients.component.css'],
 })
 export class ClientsComponent implements OnInit {
-  public clients$: any = [];
+  public clients$!: Observable<Client[]>;
   constructor(private clientsService: ClientsService) {}
 
   ngOnInit(): void {

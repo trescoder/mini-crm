@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Client } from 'src/app/interfaces/client.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,10 @@ export class ClientsService {
   constructor(private http: HttpClient) {}
 
   getAllClients() {
-    return this.http.get(this.url);
+    return this.http.get<Client[]>(this.url);
   }
 
-  registerNewClient(client: any) {
+  registerNewClient(client: Client) {
     return this.http.post(this.url, client);
   }
 
@@ -21,7 +22,7 @@ export class ClientsService {
     return this.http.delete(this.url + '/' + clientId);
   }
 
-  searchClientsByName(name: any) {
-    return this.http.get(this.url + '/' + name);
+  searchClientsByName(name: string) {
+    return this.http.get<Client[]>(this.url + '/' + name);
   }
 }

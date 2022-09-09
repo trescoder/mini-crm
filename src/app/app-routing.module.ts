@@ -2,15 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/clients', pathMatch: 'full' },
   {
     path: 'clients',
     loadChildren: () =>
-      import('./clients/clients.module').then((c) => c.ClientsModule),
-  },
-  {
-    path: 'add-client',
-    loadChildren: () =>
-      import('./add-client/add-client.module').then((ac) => ac.AddClientModule),
+      import('./modules/clients/clients.module').then((c) => c.ClientsModule),
   },
   { path: '**', redirectTo: '/clients', pathMatch: 'full' },
 ];

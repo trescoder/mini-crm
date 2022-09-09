@@ -5,14 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClientsModule } from './clients/clients.module';
-import { AddClientModule } from './add-client/add-client.module';
+import { ClientsModule } from './modules/clients/clients.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     ClientsModule,
-    AddClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

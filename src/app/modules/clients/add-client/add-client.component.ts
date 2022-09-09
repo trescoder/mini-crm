@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClientsService } from '../../clients/clients.service';
+import { ClientsService } from '../services/clients.service';
 
 @Component({
   selector: 'app-add-client',
