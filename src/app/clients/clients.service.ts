@@ -12,4 +12,8 @@ export class ClientsService {
   getAllClients() {
     return this.http.get(this.url);
   }
+
+  registerNewClient(client: any) {
+    return this.http.post(this.url, client);
+  }
 }

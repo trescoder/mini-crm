@@ -12,6 +12,5 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.clients$ = this.clientsService.getAllClients();
-    console.log(this.clients$);
   }
 }
