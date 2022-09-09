@@ -31,6 +31,8 @@ export class AddClientComponent implements OnInit {
   }
 
   registerClient() {
+    this.normalizeForm();
+
     this.clientService.registerNewClient(this.myForm.value).subscribe(
       (data: any) => {
         if (data.success) {
@@ -70,5 +72,13 @@ export class AddClientComponent implements OnInit {
     } else {
       this.isFormValid = true;
     }
+  }
+
+  normalizeForm() {
+    this.myForm.value.name = this.myForm.value.name.toLowerCase();
+    this.myForm.value.last_name = this.myForm.value.last_name.toLowerCase();
+    this.myForm.value.address = this.myForm.value.address.toLowerCase();
+    this.myForm.value.email = this.myForm.value.email.toLowerCase();
+    console.log(this.myForm.value);
   }
 }
