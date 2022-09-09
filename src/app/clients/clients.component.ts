@@ -13,4 +13,12 @@ export class ClientsComponent implements OnInit {
   ngOnInit(): void {
     this.clients$ = this.clientsService.getAllClients();
   }
+
+  removeClient(clientId: string) {
+    this.clientsService.removeClient(clientId).subscribe((data: any) => {
+      if (data.success) {
+        this.clients$ = this.clientsService.getAllClients();
+      }
+    });
+  }
 }

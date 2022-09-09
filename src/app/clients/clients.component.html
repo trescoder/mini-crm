@@ -3,7 +3,7 @@
     <p>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</p>
     <p>{{ client.tel }}</p>
     <div class="buttons-container">
-      <button>delete</button>
+      <button (click)="removeClient(client._id)">delete</button>
     </div>
   </div>
 </div>

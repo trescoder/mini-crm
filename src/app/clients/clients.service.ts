@@ -16,4 +16,8 @@ export class ClientsService {
   registerNewClient(client: any) {
     return this.http.post(this.url, client);
   }
+
+  removeClient(clientId: string) {
+    return this.http.delete(this.url + '/' + clientId);
+  }
 }
