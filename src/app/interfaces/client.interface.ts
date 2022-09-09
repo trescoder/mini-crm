@@ -1,4 +1,6 @@
 export interface Client {
+  _id?: String;
+  __v?: String;
   name: String;
   last_name: String;
   email: String;

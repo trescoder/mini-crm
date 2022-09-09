@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { NewClient } from 'src/app/interfaces/new-client';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -15,12 +21,34 @@ export class AddClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      name: [''],
-      last_name: [''],
-      email: [''],
-      tel: [''],
+      name: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(40),
+        ],
+      }),
+      last_name: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(40),
+        ],
+      }),
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email],
+      }),
+      tel: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+        ],
+      }),
       birthday: [''],
-      address: [''],
+      address: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(10)],
+      }),
       contact_type: ['Cliente'],
       origin: ['Landing page'],
     });
@@ -34,7 +62,7 @@ export class AddClientComponent implements OnInit {
     this.normalizeForm();
 
     this.clientService.registerNewClient(this.myForm.value).subscribe(
-      (data: any) => {
+      (data: NewClient) => {
         if (data.success) {
           this.myForm.reset();
         }
@@ -46,28 +74,10 @@ export class AddClientComponent implements OnInit {
   }
 
   validateForm() {
-    const { name, last_name, email, tel, birthday, address } =
-      this.myForm.value;
+    const { birthday } = this.myForm.value;
     const current_date = new Date();
     const birthday_year = new Date(birthday).getFullYear();
-
-    if (name.length < 2 || name.length >= 40) {
-      this.isFormValid = false;
-    } else if (last_name.length < 2 || last_name.length >= 40) {
-      this.isFormValid = false;
-    } else if (
-      !String(email)
-        .toLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
-    ) {
-      this.isFormValid = false;
-    } else if (isNaN(Number(tel)) || tel.length !== 10) {
-      this.isFormValid = false;
-    } else if (current_date.getFullYear() - 18 <= birthday_year) {
-      this.isFormValid = false;
-    } else if (address.length < 10) {
+    if (current_date.getFullYear() - 18 <= birthday_year) {
       this.isFormValid = false;
     } else {
       this.isFormValid = true;

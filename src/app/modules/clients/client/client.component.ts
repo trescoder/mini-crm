@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Client } from 'src/app/interfaces/client.interface';
 
 @Component({
   selector: 'app-client',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./client.component.css'],
 })
 export class ClientComponent implements OnInit {
-  @Input() client: any;
+  @Input() client!: Client;
   @Output() deleteEvent = new EventEmitter<string>();
   constructor() {}
 
