@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client } from 'src/app/interfaces/client';
-import { NewClient } from 'src/app/interfaces/new-client';
 import { RegisterClient } from 'src/app/interfaces/registered-client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
 
