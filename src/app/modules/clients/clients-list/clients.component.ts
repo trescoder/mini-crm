@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from 'src/app/interfaces/client.interface';
+import { Client } from 'src/app/interfaces/client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
 import { ClientsService } from '../services/clients.service';
 

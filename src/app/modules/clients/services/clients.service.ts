@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Client } from 'src/app/interfaces/client.interface';
-import { NewClient } from 'src/app/interfaces/new-client';
+import { Client } from 'src/app/interfaces/client';
+import { RegisterClient } from 'src/app/interfaces/registered-client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ClientsService {
   }
 
   registerNewClient(client: Client) {
-    return this.http.post<NewClient>(this.url, client);
+    return this.http.post<RegisterClient>(this.url, client);
   }
 
   removeClient(clientId: string) {
