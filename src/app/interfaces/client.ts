@@ -1,4 +1,5 @@
-export interface NewClient {
+export interface Client {
+  _id: string;
   name: string;
   last_name: string;
   email: string;

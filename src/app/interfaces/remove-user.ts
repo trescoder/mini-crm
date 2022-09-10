@@ -1,4 +1,4 @@
 export interface RemoveClient {
-  msg: String;
-  success: Boolean;
+  msg: string;
+  success: boolean;
 }

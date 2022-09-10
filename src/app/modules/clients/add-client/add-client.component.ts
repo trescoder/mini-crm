@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { NewClient } from 'src/app/interfaces/new-client';
+import { RegisterClient } from 'src/app/interfaces/registered-client';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -62,7 +62,7 @@ export class AddClientComponent implements OnInit {
     this.normalizeForm();
 
     this.clientService.registerNewClient(this.myForm.value).subscribe(
-      (data: NewClient) => {
+      (data: RegisterClient) => {
         if (data.success) {
           this.myForm.reset();
         }
