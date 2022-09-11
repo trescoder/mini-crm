@@ -41,7 +41,7 @@ export class AddClientComponent implements OnInit {
       tel: new FormControl('', {
         validators: [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(7),
           Validators.maxLength(10),
         ],
       }),
@@ -74,14 +74,19 @@ export class AddClientComponent implements OnInit {
   }
 
   validateForm() {
-    const { birthday } = this.myForm.value;
+    const { birthday, tel } = this.myForm.value;
     const current_date = new Date();
     const birthday_year = new Date(birthday).getFullYear();
-    if (current_date.getFullYear() - 18 <= birthday_year) {
+    if ((tel.length !== 7 && tel.length !== 10) || isNaN(Number(tel))) {
+      this.isFormValid = false;
+    } else if (!birthday || current_date.getFullYear() - 18 <= birthday_year) {
+      this.isFormValid = false;
+    } else if (this.myForm.invalid) {
       this.isFormValid = false;
     } else {
       this.isFormValid = true;
     }
+    console.log(this.isFormValid);
   }
 
   normalizeForm() {

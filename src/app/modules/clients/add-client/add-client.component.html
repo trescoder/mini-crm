@@ -36,9 +36,7 @@
     <mat-label>Telephone</mat-label>
     <input
       matInput
-      type="text"
-      minlength="10"
-      maxlength="10"
+      type="tel"
       placeholder="tel"
       formControlName="tel"
       [required]="true"
@@ -61,29 +59,12 @@
     <input
       matInput
       type="text"
+      minlength="10"
       placeholder="address"
       formControlName="address"
       [required]="true"
     />
   </mat-form-field>
-
-  <!-- 
-  <mat-form-field class="formField">
-    <mat-select
-      formControlName="contact_type"
-      placeholder="contact_type"
-      [disabled]="true"
-      value="Cliente"
-    >
-      <mat-option>Cliente</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="formField">
-    <mat-select formControlName="origin" placeholder="origin">
-      <mat-option>Landing page</mat-option>
-    </mat-select>
-  </mat-form-field> -->
 
   <button (click)="registerClient()" [disabled]="!isFormValid">
     register client
