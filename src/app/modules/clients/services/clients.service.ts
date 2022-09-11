@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Client } from 'src/app/interfaces/client';
 import { RegisterClient } from 'src/app/interfaces/registered-client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientsService {
-  readonly url = 'http://localhost:3000/clients';
+  readonly url = environment.apiURL;
 
   constructor(private http: HttpClient) {}
 
