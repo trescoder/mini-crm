@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,6 +11,7 @@ import { JwtService } from '../../auth/jwt.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  public error_msg = '';
   form: FormGroup = this.formBuilder.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
@@ -29,11 +31,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.form.value).subscribe({
-      next: (result: any) => {
-        this.jwtService.saveToken(result.token);
+    this.authService.login(this.form.value).subscribe(
+      (data) => {
+        this.jwtService.saveToken(data.token);
         this.router.navigateByUrl('/user/clients');
       },
-    });
+      (error) => {
+        this.error_msg = 'username or password incorrect';
+        this.router.navigateByUrl('/auth/login');
+      }
+    );
   }
 }

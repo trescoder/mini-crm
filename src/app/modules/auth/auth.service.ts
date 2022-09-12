@@ -18,4 +18,12 @@ export class AuthService {
       headers,
     });
   }
+
+  signUp(body: Login) {
+    let headers = this.defaultHeaders;
+    headers = headers.set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/sign-up', body, {
+      headers,
+    });
+  }
 }
