@@ -22,13 +22,17 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.jwtService.isLoggedIn()) {
+      this.router.navigateByUrl('/user/clients');
+    }
+  }
 
   login() {
     this.authService.login(this.form.value).subscribe({
       next: (result: any) => {
         this.jwtService.saveToken(result.token);
-        this.router.navigateByUrl('/clients');
+        this.router.navigateByUrl('/user/clients');
       },
     });
   }
