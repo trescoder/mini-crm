@@ -1,4 +1,6 @@
 nav {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 20px;
   margin-bottom: 20px;
@@ -26,6 +28,12 @@ nav ul li a.active {
   color: #00fff5;
   /* border-bottom: 2px solid rgba(55, 255, 150, 0.86); */
   border-right: 3px solid rgba(55, 255, 150, 0.86);
+}
+
+nav button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .client-container {
@@ -57,31 +65,40 @@ nav ul li a.active {
   margin: 20px auto;
 }
 
-.search-bar-container input:valid,
-.search-bar-container input:focus {
+input:valid,
+input:focus,
+input::selection {
   outline: 0;
   border: none;
 }
 
 .search-bar-container input {
+  margin-top: 10px;
   display: inline-block;
-  width: 80%;
+  width: 60%;
   padding: 5px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.82);
 }
 
 .search-bar-container button {
+  margin-left: 5px;
   display: inline-block;
   cursor: pointer;
   border: none;
   color: #fff;
-  padding: 5px;
+  /* padding: 5px; */
   border-radius: 5px;
-  background-color: rgba(5, 18, 204, 0.836);
+  /* background-color: rgba(5, 18, 204, 0.836); */
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 .search-bar-container button:hover {
   transform: scale(1.1);
+}
+
+.search-bar-container .filter-input {
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
 }

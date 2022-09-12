@@ -1,29 +1,56 @@
 <nav>
-  <ul>
-    <li>
-      <a [routerLink]="['/user/clients']" [routerLinkActive]="['active']"
-        >clients</a
-      >
-    </li>
-    <li>
-      <a [routerLink]="['/user/add-client']" [routerLinkActive]="['active']"
-        >add client</a
-      >
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li>
+        <a [routerLink]="['/user/clients']" [routerLinkActive]="['active']"
+          >clients</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/user/add-client']" [routerLinkActive]="['active']"
+          >add client</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+  </div>
 </nav>
-
+<mat-divider></mat-divider>
 <div class="search-bar-container">
-  <!-- <input
-    #clientName
-    (keyup)="searchClient(clientName.value)"
+  <!-- <mat-form-field class="mat-form-field">
+    <mat-label>Select an option</mat-label>
+    <mat-select #keyName>
+      <mat-option value="name">name</mat-option>
+      <mat-option value="last_name">last name</mat-option>
+      <mat-option value="email">email</mat-option>
+      <mat-option value="tel">tel</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <select matNativeControl name="keyName" #keyName class="filter-input">
+    <option value="name" selected>name</option>
+    <option value="last_name">last name</option>
+    <option value="email">email</option>
+    <option value="tel">tel</option>
+  </select>
+  <input
+    #clientProperty
+    (keyup)="filterClients(keyName.value, clientProperty.value)"
     type="text"
-    placeholder="client name"
+    placeholder="{{ keyName.value }}"
   />
-  <button (click)="searchClient(clientName.value)">search</button> -->
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="filterClients(keyName.value, clientProperty.value)"
+  >
+    filter
+  </button>
 </div>
+<mat-divider></mat-divider>
 <div class="client-container">
-  <div class="client" *ngFor="let client of clients$ | async">
+  <div class="client" *ngFor="let client of clients$">
     <app-client
       [client]="client"
       (deleteEvent)="removeClient($event)"
