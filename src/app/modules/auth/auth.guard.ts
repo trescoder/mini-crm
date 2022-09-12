@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (!this.jwtService.isLoggedIn()) {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/auth/login');
     }
     return this.jwtService.isLoggedIn();
   }
