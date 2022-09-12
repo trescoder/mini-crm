@@ -1,11 +1,24 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/clients']" [routerLinkActive]="['active']">clients</a>
+    </li>
+    <li>
+      <a [routerLink]="['/clients/add-client']" [routerLinkActive]="['active']"
+        >add client</a
+      >
+    </li>
+  </ul>
+</nav>
+
 <div class="search-bar-container">
-  <input
+  <!-- <input
     #clientName
     (keyup)="searchClient(clientName.value)"
     type="text"
     placeholder="client name"
   />
-  <button (click)="searchClient(clientName.value)">search</button>
+  <button (click)="searchClient(clientName.value)">search</button> -->
 </div>
 <div class="client-container">
   <div class="client" *ngFor="let client of clients$ | async">

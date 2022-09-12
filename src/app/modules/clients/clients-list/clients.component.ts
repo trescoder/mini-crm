@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Client } from 'src/app/interfaces/client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
 import { ClientsService } from '../services/clients.service';
@@ -14,7 +14,9 @@ export class ClientsComponent implements OnInit {
   constructor(private clientsService: ClientsService) {}
 
   ngOnInit(): void {
-    this.clients$ = this.clientsService.getAllClients();
+    this.clientsService.getAllClients().subscribe((data: any) => {
+      this.clients$ = of(data.data);
+    });
   }
 
   removeClient(clientId: string) {
@@ -22,12 +24,10 @@ export class ClientsComponent implements OnInit {
       .removeClient(clientId)
       .subscribe((data: RemoveClient) => {
         if (data.success) {
-          this.clients$ = this.clientsService.getAllClients();
+          this.clientsService.getAllClients().subscribe((data: any) => {
+            this.clients$ = of(data.data);
+          });
         }
       });
-  }
-
-  searchClient(name: string) {
-    this.clients$ = this.clientsService.searchClientsByName(name);
   }
 }
