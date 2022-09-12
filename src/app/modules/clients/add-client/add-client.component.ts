@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterClient } from 'src/app/interfaces/registered-client';
+import { JwtService } from '../../auth/jwt.service';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -17,7 +19,12 @@ export class AddClientComponent implements OnInit {
   myForm!: FormGroup;
   isFormValid = false;
 
-  constructor(private fb: FormBuilder, private clientService: ClientsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private clientService: ClientsService,
+    private jwtService: JwtService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -41,7 +48,7 @@ export class AddClientComponent implements OnInit {
       tel: new FormControl('', {
         validators: [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(7),
           Validators.maxLength(10),
         ],
       }),
@@ -74,14 +81,19 @@ export class AddClientComponent implements OnInit {
   }
 
   validateForm() {
-    const { birthday } = this.myForm.value;
+    const { birthday, tel } = this.myForm.value;
     const current_date = new Date();
     const birthday_year = new Date(birthday).getFullYear();
-    if (current_date.getFullYear() - 18 <= birthday_year) {
+    if ((tel.length !== 7 && tel.length !== 10) || isNaN(Number(tel))) {
+      this.isFormValid = false;
+    } else if (!birthday || current_date.getFullYear() - 18 <= birthday_year) {
+      this.isFormValid = false;
+    } else if (this.myForm.invalid) {
       this.isFormValid = false;
     } else {
       this.isFormValid = true;
     }
+    console.log(this.isFormValid);
   }
 
   normalizeForm() {
@@ -90,5 +102,10 @@ export class AddClientComponent implements OnInit {
     this.myForm.value.address = this.myForm.value.address.toLowerCase();
     this.myForm.value.email = this.myForm.value.email.toLowerCase();
     console.log(this.myForm.value);
+  }
+
+  logOut() {
+    this.jwtService.logOut();
+    this.router.navigateByUrl('/auth/login');
   }
 }

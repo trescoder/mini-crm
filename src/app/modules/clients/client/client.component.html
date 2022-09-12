@@ -1,5 +1,10 @@
-<p>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</p>
+<h2>{{ client.name | uppercase }} {{ client.last_name | uppercase }}</h2>
+<p>{{ client.email }}</p>
 <p>{{ client.tel }}</p>
+<p>{{ client.contact_type }}</p>
+<p>{{ client.origin }}</p>
 <div class="buttons-container">
-  <button (click)="emitDeleteEvent(client._id)">delete</button>
+  <button mat-flat-button color="warn" (click)="emitDeleteEvent(client._id)">
+    delete <mat-icon>delete</mat-icon>
+  </button>
 </div>
