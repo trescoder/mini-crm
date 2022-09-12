@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterClient } from 'src/app/interfaces/registered-client';
+import { JwtService } from '../../auth/jwt.service';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -17,7 +19,12 @@ export class AddClientComponent implements OnInit {
   myForm!: FormGroup;
   isFormValid = false;
 
-  constructor(private fb: FormBuilder, private clientService: ClientsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private clientService: ClientsService,
+    private jwtService: JwtService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -95,5 +102,10 @@ export class AddClientComponent implements OnInit {
     this.myForm.value.address = this.myForm.value.address.toLowerCase();
     this.myForm.value.email = this.myForm.value.email.toLowerCase();
     console.log(this.myForm.value);
+  }
+
+  logOut() {
+    this.jwtService.logOut();
+    this.router.navigateByUrl('/auth/login');
   }
 }

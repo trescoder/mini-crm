@@ -1,16 +1,21 @@
 <nav>
-  <ul>
-    <li>
-      <a [routerLink]="['/user/clients']" [routerLinkActive]="['active']"
-        >clients</a
-      >
-    </li>
-    <li>
-      <a [routerLink]="['/user/add-client']" [routerLinkActive]="['active']"
-        >add client</a
-      >
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li>
+        <a [routerLink]="['/user/clients']" [routerLinkActive]="['active']"
+          >clients</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/user/add-client']" [routerLinkActive]="['active']"
+          >add client</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+  </div>
 </nav>
 
 <form [formGroup]="myForm">
