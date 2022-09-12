@@ -1,3 +1,16 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/clients']" [routerLinkActive]="['active']">clients</a>
+    </li>
+    <li>
+      <a [routerLink]="['/clients/add-client']" [routerLinkActive]="['active']"
+        >add client</a
+      >
+    </li>
+  </ul>
+</nav>
+
 <form [formGroup]="myForm">
   <mat-form-field class="formField" appearance="fill">
     <mat-label>Name</mat-label>

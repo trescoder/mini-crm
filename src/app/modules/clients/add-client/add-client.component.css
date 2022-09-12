@@ -1,5 +1,35 @@
+nav {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 22px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  /* color: #4da6b5; */
+  color: rgb(76, 139, 226);
+  padding-right: 2px;
+  padding-bottom: 2px;
+}
+
+nav ul li a.active {
+  color: #00fff5;
+  /* border-bottom: 2px solid rgba(55, 255, 150, 0.86); */
+  border-right: 3px solid rgba(55, 255, 150, 0.86);
+}
+
 form {
-  margin-top: 40px;
+  margin-top: 100px;
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
