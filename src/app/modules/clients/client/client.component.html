@@ -4,5 +4,7 @@
 <p>{{ client.contact_type }}</p>
 <p>{{ client.origin }}</p>
 <div class="buttons-container">
-  <button (click)="emitDeleteEvent(client._id)">delete</button>
+  <button mat-flat-button color="warn" (click)="emitDeleteEvent(client._id)">
+    delete <mat-icon>delete</mat-icon>
+  </button>
 </div>
