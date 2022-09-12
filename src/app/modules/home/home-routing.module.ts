@@ -7,13 +7,14 @@ const routes: Routes = [
   // login/sign-up form will be shown inside the home component
   {
     path: '',
-    redirectTo: '/auth/login',
-    pathMatch: 'full',
-  },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('../login/login.module').then((l) => l.LoginModule),
+    component: HomeComponent,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('../login/login.module').then((l) => l.LoginModule),
+      },
+    ],
   },
   // the clients view will be outside the home component
   {
