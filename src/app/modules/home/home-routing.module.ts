@@ -7,17 +7,17 @@ const routes: Routes = [
   // login/sign-up form will be shown inside the home component
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/auth/login',
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
       import('../login/login.module').then((l) => l.LoginModule),
   },
   // the clients view will be outside the home component
   {
-    path: 'clients',
+    path: 'user',
     loadChildren: () =>
       import('../clients/clients.module').then((c) => c.ClientsModule),
     canActivate: [AuthGuard],
