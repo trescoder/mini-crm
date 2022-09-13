@@ -33,8 +33,8 @@ export class SignUpComponent implements OnInit {
       },
       (error) => {
         this.error_msg = 'This username is already taken';
+        setTimeout(() => (this.error_msg = ''), 4000);
       }
     );
-    console.log(this.form.value);
   }
 }
