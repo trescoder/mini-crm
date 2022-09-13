@@ -103,9 +103,4 @@ export class AddClientComponent implements OnInit {
     this.myForm.value.email = this.myForm.value.email.toLowerCase();
     console.log(this.myForm.value);
   }
-
-  logOut() {
-    this.jwtService.logOut();
-    this.router.navigateByUrl('/auth/login');
-  }
 }

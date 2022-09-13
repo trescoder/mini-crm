@@ -14,20 +14,14 @@ import { ClientsService } from '../services/clients.service';
 export class ClientsComponent implements OnInit {
   public clients$!: Client[];
   public clientsCopy!: Client[];
-  @Output() showLoggedMenu = new EventEmitter();
 
-  constructor(
-    private clientsService: ClientsService,
-    private jwtService: JwtService,
-    private router: Router
-  ) {}
+  constructor(private clientsService: ClientsService) {}
 
   ngOnInit(): void {
     this.clientsService.getAllClients().subscribe((data: any) => {
       this.clients$ = data.data;
       this.clientsCopy = data.data;
     });
-    this.showLoggedMenu.emit();
   }
 
   filterClients(property: string, value: string | number) {
@@ -49,10 +43,5 @@ export class ClientsComponent implements OnInit {
           });
         }
       });
-  }
-
-  logOut() {
-    this.jwtService.logOut();
-    this.router.navigateByUrl('/auth/login');
   }
 }

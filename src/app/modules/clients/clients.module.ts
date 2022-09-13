@@ -9,9 +9,10 @@ import { ClientComponent } from './client/client.component';
 import { AddClientComponent } from './add-client/add-client.component';
 // import { ReactiveFormsModule } from '@angular/forms';
 import { GlobalModule } from '../global/global.module';
+import { ClientsViewComponent } from './clients-view/clients-view.component';
 
 @NgModule({
-  declarations: [ClientsComponent, ClientComponent, AddClientComponent],
+  declarations: [ClientsComponent, ClientComponent, AddClientComponent, ClientsViewComponent],
   imports: [CommonModule, GlobalModule, ClientsRoutingModule],
 })
 export class ClientsModule {}
