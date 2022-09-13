@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/user/clients');
       },
       (error) => {
+        this.router.navigateByUrl('/auth/login');
         this.error_msg = 'username or password incorrect';
         setTimeout(() => (this.error_msg = ''), 4000);
       }

@@ -1,3 +1,8 @@
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="showLoadingBar"
+  class="loadinBar"
+></mat-progress-bar>
 <form [formGroup]="myForm">
   <mat-form-field class="formField" appearance="fill">
     <mat-label>Name</mat-label>

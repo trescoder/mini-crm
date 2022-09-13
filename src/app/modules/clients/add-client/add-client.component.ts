@@ -5,9 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RegisterClient } from 'src/app/interfaces/registered-client';
-import { JwtService } from '../../auth/jwt.service';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -18,13 +16,9 @@ import { ClientsService } from '../services/clients.service';
 export class AddClientComponent implements OnInit {
   myForm!: FormGroup;
   isFormValid = false;
+  showLoadingBar = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private clientService: ClientsService,
-    private jwtService: JwtService,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder, private clientService: ClientsService) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -66,15 +60,19 @@ export class AddClientComponent implements OnInit {
   }
 
   registerClient() {
+    this.showLoadingBar = true;
     this.normalizeForm();
 
     this.clientService.registerNewClient(this.myForm.value).subscribe(
       (data: RegisterClient) => {
         if (data.success) {
+          this.showLoadingBar = false;
+          alert('client added');
           this.myForm.reset();
         }
       },
       (error: any) => {
+        this.showLoadingBar = false;
         alert(error.error.message);
       }
     );
