@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './clients-list/clients.component';
-import { ClientComponent } from './client/client.component';
+import { ClientComponent } from './clients-list/client/client.component';
 
 import { AddClientComponent } from './add-client/add-client.component';
 import { GlobalModule } from '../global/global.module';
