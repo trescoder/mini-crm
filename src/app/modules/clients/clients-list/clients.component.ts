@@ -1,9 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/interfaces/client';
 import { RemoveClient } from 'src/app/interfaces/remove-user';
-import { JwtService } from '../../auth/jwt.service';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
