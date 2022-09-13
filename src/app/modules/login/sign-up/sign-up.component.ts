@@ -1,9 +1,12 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { ClientsService } from '../../clients/services/clients.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,8 +16,16 @@ import { ClientsService } from '../../clients/services/clients.service';
 export class SignUpComponent implements OnInit {
   public error_msg = '';
   form: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
+    username: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(30),
+      ],
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(6)],
+    }),
   });
 
   constructor(
