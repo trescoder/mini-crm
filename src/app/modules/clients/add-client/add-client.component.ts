@@ -79,6 +79,9 @@ export class AddClientComponent implements OnInit {
   }
 
   validateForm() {
+    if (this.myForm.untouched) {
+      return;
+    }
     const { birthday, tel } = this.myForm.value;
     const current_date = new Date();
     const birthday_year = new Date(birthday).getFullYear();

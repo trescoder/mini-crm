@@ -1,4 +1,4 @@
-export interface NewClient {
+export type NewClient = {
   name: string;
   last_name: string;
   email: string;
@@ -7,4 +7,4 @@ export interface NewClient {
   address: string;
   contact_type: 'Cliente';
   origin: 'Landing Page';
-}
+};
